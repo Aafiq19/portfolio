@@ -1,0 +1,804 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #0a0a0b;
+    --text-color: #e0e0e0;
+    --primary-color: #00f2ff;
+    --secondary-color: #7000ff;
+    --accent-color: #2e00ff;
+    /* Changed from Red to Deep Blue/Indigo */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(18, 18, 20, 0.7);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-fast: 0.3s ease;
+    --transition-medium: 0.5s ease;
+    --container-width: 1200px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: var(--transition-fast);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    border-color: transparent;
+}
+
+/* Header & Nav */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: padding 0.3s;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.3;
+    /* Dim the video for better text readability */
+}
+
+/* Dark overlay & Transition on video */
+/* Note: The main .hero::after is defined at the bottom of the file now for specific gradient control. 
+   We remove the duplicate here to avoid conflict. */
+
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.social-hero {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-hero a {
+    font-size: 1.5rem;
+    color: #ccc;
+    background: var(--glass-bg);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition-fast);
+}
+
+.social-hero a:hover {
+    background: var(--primary-color);
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
+}
+
+/* Profile Image Glowing Effect */
+.profile-wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--glass-border);
+    position: relative;
+    z-index: 2;
+}
+
+.glow-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    filter: blur(30px);
+    opacity: 0.6;
+    z-index: 1;
+    animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+/* Sections General */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 3rem;
+    display: inline-block;
+}
+
+.section-title span {
+    color: var(--primary-color);
+}
+
+/* About Section */
+.about-grid {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    transition: var(--transition-fast);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.project-img {
+      height: 380px;
+    background: #2a2a2e;
+    /* Placeholder color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 3rem;
+    color: #555; */
+    position: relative;  
+}
+
+.project-img img {
+    height: 380px;
+    background: #2a2a2e;
+    /* Placeholder color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #555;
+    position: relative;
+    /* For overlay if using images later */
+}
+
+.project-img i {
+    opacity: 0.5;
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: #aaa;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.project-links a {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.project-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Contact Section */
+.contact-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.contact-item p {
+    color: #ccc;
+}
+
+/* Footer */
+footer {
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 50px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .profile-wrapper {
+        width: 250px;
+        height: 250px;
+        margin: 40px auto 0;
+    }
+
+    .social-hero {
+        justify-content: center;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(10, 10, 11, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition-medium);
+        border-left: 1px solid var(--glass-border);
+        z-index: 999;
+        /* Below toggle but above content */
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        z-index: 1002;
+        /* Above everything */
+        position: relative;
+    }
+
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    /* Deeper translation and slight scale for smoother feel */
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smoother cubic-bezier */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- NEW: Glow Effect (Harry Potter Wand) --- */
+.project-card {
+    position: relative;
+    /* Ensure existing border/bg styles are compatible */
+}
+
+/* The Shine Effect */
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.06),
+            transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Border "Spotlight" Effect */
+.project-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y),
+            rgba(0, 242, 255, 0.3),
+            transparent 40%);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+/* Ensure content stays above the glow */
+.project-card .project-img,
+.project-card .project-info {
+    position: relative;
+    z-index: 10;
+    background: inherit;
+    /* Inherit transparency if needed, or set explicitly */
+    border-radius: inherit;
+}
+
+/* Fix for the card background to allow border glow to show if we used a border approach, 
+   but with radial overlay, we don't strictly need it. 
+   However, let's make the card background slightly more solid to cover the ::after layer if it was behind using z-index -1.
+   Here z-index 1 is on top. So ::after is ON TOP of the card bg but below content.
+*/
+
+
+/* --- NEW: Particle Canvas --- */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    /* Deep background */
+    pointer-events: none;
+}
+
+/* --- Refined: Hero Seamless Transition --- */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient: Top dark overlay -> Transparent center -> Bottom Fade to solid BG */
+    background: linear-gradient(to bottom,
+            rgba(10, 10, 11, 0.4) 0%,
+            rgba(10, 10, 11, 0.2) 60%,
+            var(--bg-color) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- NEW: Snake Scroll Indicator --- */
+.scroll-progress-container {
+    position: fixed;
+    top: 5%;
+    right: 20px;
+    height: 90vh;
+    width: 40px;
+    z-index: 100;
+    pointer-events: none;
+    /* Let clicks pass through */
+    display: flex;
+    justify-content: center;
+}
+
+.scroll-svg {
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+}
+
+.scroll-path-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    /* Darker path ahead */
+    stroke-width: 2;
+}
+
+.scroll-path-progress {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    /* We will manipulate dasharray/offset in JS */
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+/* --- NEW: Tag Hover Effects --- */
+.tag {
+    cursor: default;
+    transition: var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.tag:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.theme-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+    padding: 10px;
+}
+
+.theme-btn:hover {
+    transform: rotate(20deg);
+    color: var(--primary-color);
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+    --bg-color: #f0f0f5;
+    /* Light gray-ish white */
+    --text-color: #1a1a1a;
+    /* Much darker text for readability */
+    --card-bg: rgba(255, 255, 255, 0.9);
+    /* More opaque */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    /* Lighter glass */
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --accent-color: #4f46e5;
+    /* Adjusted accent for light mode */
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+    color: #000;
+}
+
+body.light-mode .menu-toggle {
+    color: #333;
+}
+
+body.light-mode .theme-btn {
+    color: #333;
+}
+
+body.light-mode .about-text p,
+body.light-mode .project-info p,
+body.light-mode .contact-item p,
+body.light-mode .hero-content p {
+    /* Added hero text */
+    color: #333;
+}
+
+/* Ensure nav links are visible */
+body.light-mode .nav-links a {
+    color: #333;
+}
+
+body.light-mode .nav-links a:hover,
+body.light-mode .nav-links a.active {
+    color: var(--primary-color);
+}
+
+body.light-mode .tag {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust blobs for light mode to be softer */
+body.light-mode .blob {
+    opacity: 0.15;
+}
+
+/* Adjust Nav for Light Mode */
+body.light-mode header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .social-hero a {
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .section-title span {
+    color: var(--secondary-color);
+    /* Darker purple for contrast */
+}
+
+/* Fix Hero Text shadow/readability in light mode */
+body.light-mode .hero {
+    /* We might need a slightly stronger overlay if the video is dark, 
+       but if we want light mode, we should probably brighten the hero overlay */
+}
+
+body.light-mode .hero::after {
+    /* Use a white gradient overlay for light mode instead of dark */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.5) 60%,
+            var(--bg-color) 100%);
+}
+
+body.light-mode .project-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.05);
+}

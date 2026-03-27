@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohomed Aafiq | Software Developer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+  <!-- Dynamic Background Animation (Canvas) -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Snake Scroll Indicator -->
+  <div class="scroll-progress-container">
+    <svg class="scroll-svg" width="40" height="90%" viewBox="0 0 40 100" preserveAspectRatio="none">
+      <!-- Background Track -->
+      <path class="scroll-path-track" d="M20,0 Q35,25 20,50 Q5,75 20,100" />
+      <!-- Progress Line (The Snake Body) -->
+      <path class="scroll-path-progress" d="M20,0 Q35,25 20,50 Q5,75 20,100" />
+    </svg>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header id="header">
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Aafiq<span style="color:var(--primary-color)">.</span></a>
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <!-- Theme Toggle Button -->
+          <button id="themeToggleBtn" class="theme-btn">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <video autoplay muted loop id="bgVideo">
+      <!-- <source src="videos/bg.mp4" type="video/mp4"> -->
+    </video>
+
+    <div class="container">
+      <div class="hero-content">
+        <p class="greeting" style="color: var(--primary-color); font-weight: 600; margin-bottom: 10px;">HELLO, I'M</p>
+        <h1><span class="gradient-text">Mohomed Aafiq</span></h1>
+        <p>Cross-Platform Mobile App & Full-Stack Developer building seamless and engaging digital experiences."</p>
+
+        <div class="cta-group">
+          <a href="#projects" class="btn">View My Work</a>
+        </div>
+
+        <div class="social-hero">
+          <a href="https://github.com/Aafiq19" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:mohommadaafiq04@email.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Image Overlay (Optional absolute visual) -->
+    <!-- We can position this absolutely or use flexbox. 
+             Since the original had a profile image, let's keep it but make it sleek.
+             For desktop, we'll shift it to the right. -->
+
+    <div style="position: absolute; right: 10%; bottom: 10%; display: none;" class="desktop-profile">
+      <!-- Using JS or CSS media query to show this only on large screens if desired, 
+                  but simplest is often to put it in the flow. 
+                  Let's rely on the flexbox flow in a grid/flex container for robust layout.
+                  I will adjust main CSS to handle side-by-side if I put it in container.
+             -->
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>About <span>Me</span></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="profile-display" style="display: flex; justify-content: center;">
+          <div class="profile-wrapper">
+            <div class="glow-circle"></div>
+            <img src="images/profile.jpeg" alt="Mohomed Aafiq" class="profile-img">
+          </div>
+        </div>
+
+        <div class="about-text">
+          <h3>Future-Ready Developer</h3>
+          <p>
+            I am a passionate Cross-Platform Mobile App & Full-Stack Developer, focused on building intuitive and
+            high-performing digital solutions.
+            I thrive on learning modern technologies and applying them to solve real-world challenges.
+          </p>
+          <p>
+            I specialize in crafting seamless mobile experiences, responsive web interfaces, and robust backend systems.
+            My goal is to work on impactful projects that innovate and elevate the user experience.
+          </p>
+
+
+          <div class="stats">
+            <div class="stat-item">
+              <h3>2+</h3>
+              <p>Years Coding</p>
+            </div>
+            <div class="stat-item">
+              <h3>10+</h3>
+              <p>Projects Done</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>My <span>Projects</span></h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-img">
+            <img src="./images/weatherapp.jpeg" alt="">
+          </div>
+          <div class="project-info">
+            <h3>WeatherApplication-Flutter</h3>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+            </div>
+            <p>Full-statck e-commerce solutionn using microservices architecture</p>
+            <div class="project-links">
+              <a href="#" title="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" title="Live Demo"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-img">
+            <img src="./images/shoe.jpeg" alt="">
+          </div>
+          <div class="project-info">
+            <h3>The MAQ_SHOES e-commerce website</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">PHP</span>
+            </div>
+            <p>Full-statck e-commerce solutionn using microservices architecture</p>
+            <div class="project-links">
+              <a href="#" title="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" title="Live Demo"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-img">
+            <img src="./images/note.jpeg" alt="">
+          </div>
+          <div class="project-info">
+            <h3>Note-App</h3>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">dart</span>
+            </div>
+            <p>Full-statck e-commerce solutionn using microservices architecture</p>
+            <div class="project-links">
+              <a href="#" title="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" title="Live Demo"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-img">
+            <img src="./images/logistics.jpeg" alt="">
+          </div>
+          <div class="project-info">
+            <h3>logistics management application</h3>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">MySQL</span>
+            </div>
+            <p>Full-statck e-commerce solutionn using microservices architecture</p>
+            <div class="project-links">
+              <a href="#" title="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" title="Live Demo"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </article>
+        <!-- Project 5 -->
+        <article class="project-card">
+          <div class="project-img">
+            <img src="images/mern.jpeg" alt="">
+          </div>
+          <div class="project-info">
+            <h3>Hardware Shop Management System - MERN Stack</h3>
+            <div class="tags">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React.js</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <p>Full-statck e-commerce solutionn using microservices architecture</p>
+            <div class="project-links">
+              <a href="#" title="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" title="Live Demo"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </article>
+        <!-- Project 6 -->
+        <article class="project-card">
+          <div class="project-img">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+          <div class="project-info">
+            <h3>MysuperHero-App</h3>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">xml</span>
+            </div>
+            <p>Full-statck e-commerce solutionn using microservices architecture</p>
+            <div class="project-links">
+              <a href="#" title="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" title="Live Demo"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get In <span>Touch</span></h2>
+      </div>
+
+      <div class="contact-container">
+        <p>Interested in working together or have a question? Feel free to reach out!</p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <p>mohommadaafiq04@email.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>@MohomedAafiq</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <a href="mailto:mohommadaafiq04@email.com" class="btn">Say Hello</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Mohomed Aafiq. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lenis for Smooth Scrolling -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
